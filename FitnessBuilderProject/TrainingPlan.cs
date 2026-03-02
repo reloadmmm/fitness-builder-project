@@ -8,11 +8,43 @@ namespace FitnessBuilderProject
 {
     public class TrainingPlan
     {
-        public string Title { get; set; }
-        public string Difficulty { get; set; }
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Название плана не может быть пустым");
+                _title = value;
+            }
+        }
+
+        private int _durationMinutes;
+        public int DurationMinutes
+        {
+            get => _durationMinutes;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Длительность должна быть больше 0");
+                _durationMinutes = value;
+            }
+        }
+
+        private int _daysPerWeek;
+        public int DaysPerWeek
+        {
+            get => _daysPerWeek;
+            set
+            {
+                if (value <= 0 || value > 7)
+                    throw new ArgumentException("Количество дней должно быть от 1 до 7");
+                _daysPerWeek = value;
+            }
+        }
         public List<string> Exercises { get; set; }
         public int DurationMinutes { get; set; }
-        public int DaysPerWeek { get; set; }
         public string Equipment { get; set; }
 
         public TrainingPlan()
@@ -22,6 +54,8 @@ namespace FitnessBuilderProject
 
         public void DisplayPlan()
         {
+            if (string.IsNullOrWhiteSpace(Title))
+                throw new InvalidOperationException("План не инициализирован корректно");
             Console.WriteLine($"\nПЛАН ТРЕНИРОВОК: {Title.ToUpper()}");
             Console.WriteLine($"Сложность: {Difficulty}");
             Console.WriteLine($"Длительность: {DurationMinutes} минут");
