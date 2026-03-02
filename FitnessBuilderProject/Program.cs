@@ -10,43 +10,34 @@ namespace FitnessBuilderProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("ПРИЛОЖЕНИЕ ДЛЯ ФИТНЕСА (Строитель)\n");
+            try
+            {
+                Console.WriteLine("=== Создание силового плана ===");
 
-            var strengthBuilder = new StrengthTrainingBuilder();
-            var cardioBuilder = new CardioTrainingBuilder();
+                var strengthBuilder = new StrengthTrainingBuilder();
+                var director = new TrainingPlanDirector(strengthBuilder);
+                director.BuildPlan();
 
-            var director = new TrainingPlanDirector(strengthBuilder);
+                var strengthPlan = strengthBuilder.GetPlan();
+                strengthPlan.DisplayPlan();
 
-            Console.WriteLine("1. Полная силовая программа:");
-            var strengthPlan = director.BuildFullPlan();
-            strengthPlan.DisplayPlan();
+                Console.WriteLine("\n=== Создание кардио плана ===");
 
-            Console.WriteLine("\n2. Полная кардио программа:");
-            director.ChangeBuilder(cardioBuilder);
-            var cardioPlan = director.BuildFullPlan();
-            cardioPlan.DisplayPlan();
+                var cardioBuilder = new CardioTrainingBuilder();
+                director = new TrainingPlanDirector(cardioBuilder);
+                director.BuildPlan();
 
-            Console.WriteLine("\n3. Быстрая силовая программа (без оборудования):");
-            director.ChangeBuilder(strengthBuilder);
-            var quickPlan = director.BuildCustomPlan(
-                withTitle: true,
-                withExercises: true,
-                withDuration: true,
-                withFrequency: false
-            );
-            quickPlan.DisplayPlan();
+                var cardioPlan = cardioBuilder.GetPlan();
+                cardioPlan.DisplayPlan();
 
-            Console.WriteLine("\n4. Ручное создание плана без директора:");
-            var manualBuilder = new StrengthTrainingBuilder();
-            manualBuilder.Reset();
-            manualBuilder.SetTitle();
-            manualBuilder.SetDifficulty();
-            manualBuilder.AddExercises();
-            var manualPlan = manualBuilder.GetPlan();
-            Console.WriteLine(manualPlan.GetSummary());
+                Console.WriteLine("\nДемонстрация завершена успешно.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
+            }
 
-            Console.WriteLine("\nВСЕ ПЛАНЫ СОЗДАНЫ");
-            Console.WriteLine("Использованы паттерны: Builder (Строитель)");
+            Console.ReadLine();
         }
     }
 }
