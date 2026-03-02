@@ -54,21 +54,12 @@ namespace FitnessBuilderProject
 
         public void DisplayPlan()
         {
-            if (string.IsNullOrWhiteSpace(Title))
-                throw new InvalidOperationException("План не инициализирован корректно");
-            Console.WriteLine($"\nПЛАН ТРЕНИРОВОК: {Title.ToUpper()}");
-            Console.WriteLine($"Сложность: {Difficulty}");
-            Console.WriteLine($"Длительность: {DurationMinutes} минут");
-            Console.WriteLine($"Дней в неделю: {DaysPerWeek}");
-            Console.WriteLine($"Оборудование: {Equipment}");
-            Console.WriteLine("Упражнения:");
+            var sb = new StringBuilder();
+            sb.AppendLine($"Название: {Title}");
+            sb.AppendLine($"Длительность (мин): {DurationMinutes}");
+            sb.AppendLine($"Дней в неделю: {DaysPerWeek}");
 
-            for (int i = 0; i < Exercises.Count; i++)
-            {
-                Console.WriteLine($"  {i + 1}. {Exercises[i]}");
-            }
-
-            Console.WriteLine($"\nИтого упражнений: {Exercises.Count}");
+            Console.WriteLine(sb.ToString());
         }
 
         public string GetSummary()
