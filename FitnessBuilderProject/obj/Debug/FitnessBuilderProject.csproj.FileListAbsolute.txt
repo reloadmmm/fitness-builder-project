@@ -1,0 +1,8 @@
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\bin\Debug\FitnessBuilderProject.exe.config
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\bin\Debug\FitnessBuilderProject.exe
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\bin\Debug\FitnessBuilderProject.pdb
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\obj\Debug\FitnessBuilderProject.csproj.AssemblyReference.cache
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\obj\Debug\FitnessBuilderProject.csproj.CoreCompileInputs.cache
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\obj\Debug\FitnessBuilderProject.exe
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\obj\Debug\FitnessBuilderProject.pdb
+C:\Users\tilte\source\repos\FitnessBuilderProject\FitnessBuilderProject\obj\Debug\FitnessBuilderProject.exe.config
